@@ -1,0 +1,115 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kullanıcı Cihaz Alarmları</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://www.tescom-ups.com/images/anchor_amblem.svg"
+    />
+    <style>
+      table { width: 100%; border-collapse: collapse; } th, td { padding: 10px;
+      text-align: start; border: 1px solid #ccc; } th { background-color:
+      #1a73e8; color: #fff; } .filters { margin-bottom: 20px; }
+      tr:nth-child(even) { background-color: #d2deed; }
+    </style>
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/devices.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <h1>Tescom</h1>
+        <p>Kesintisiz Güç Kaynakları</p>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Ana Sayfa</a></li>
+        <li><a href="/profile">Profil</a></li>
+        <li><a href="/devices" class="active">Cihazlar</a></li>
+        <li><a href="/auth/logout" class="logout">Çıkış</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <h1>Kullanıcı Cihaz Alarmları</h1>
+
+      <!-- Filtreleme seçenekleri -->
+
+      <div class="filters-section">
+        <!-- Tarih Filtresi -->
+        <div class="filter-group">
+          <label for="dateFilter">Tarihe Göre Filtrele:</label>
+          <select id="dateFilter" onchange="applyFilters()">
+            <option value="">Tümü</option>
+            <option value="24hours">Son 24 Saat</option>
+            <option value="1week">Son 1 Hafta</option>
+            <option value="1month">Son 1 Ay</option>
+          </select>
+        </div>
+        <!-- Alarm Türü Filtresi -->
+        <div class="filter-group">
+          <label for="alarmTypeFilter">Alarm Türüne Göre Filtrele:</label>
+          <select id="alarmTypeFilter" onchange="applyFilters()">
+            <option value="">Tümü</option>
+            <option value="temperature">Sıcaklık</option>
+            <option value="battery">Batarya</option>
+          </select>
+        </div>
+
+        <!-- Konum Filtresi -->
+        <div class="filter-group">
+          <label for="locationFilter">Konuma Göre Filtrele:</label>
+          <select id="locationFilter" onchange="applyFilters()">
+            <option value="">Tümü</option>
+            <option value="Istanbul">İstanbul</option>
+            <option value="Ankara">Ankara</option>
+            <option value="Izmir">İzmir</option>
+          </select>
+        </div>
+        <!-- Cihaz Adı Filtresi -->
+        <div class="filter-group">
+          <label for="deviceNameFilter">Cihaz Adına Göre Filtrele:</label>
+          <input
+            type="text"
+            id="deviceNameFilter"
+            placeholder="Cihaz adı girin"
+            oninput="applyFilters()"
+          />
+        </div>
+        <!-- Sıralama -->
+        <div class="filter-group">
+          <label for="sortOrder">Sırala:</label>
+          <select id="sortOrder" onchange="applyFilters()">
+            <option value="date_desc">Tarihe Göre (Yeni)</option>
+            <option value="date_asc">Tarihe Göre (Eski)</option>
+            <option value="alarm_type">Alarm Türüne Göre</option>
+            <option value="device_name_asc">Cihaz Adına Göre (A-Z)</option>
+            <option value="device_name_desc">Cihaz Adına Göre (Z-A)</option>
+          </select>
+        </div>
+      </div>
+      <!-- Alarm Tablosu -->
+      <table>
+        <thead>
+          <tr>
+            <th>Cihaz Adı</th>
+            <th>Alarm Türü</th>
+            <th>Konum</th>
+            <th>Tarih</th>
+          </tr>
+        </thead>
+        <tbody id="alarmTableBody">
+          {{#each alarms}}
+            <tr>
+              <td>{{this.device_name}}</td>
+              <td>{{this.alarm_type}}</td>
+              <td>{{this.location}}</td>
+              <td id="date">{{this.timestamp}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <script src="/alarms.js"></script>
+  </body>
+</html>

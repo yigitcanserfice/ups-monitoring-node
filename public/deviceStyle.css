@@ -1,0 +1,13 @@
+.device {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+.online {
+  background-color: #c8e6c9; /* Yeşil arka plan */
+}
+
+.offline {
+  background-color: #ffcdd2; /* Kırmızı arka plan */
+}

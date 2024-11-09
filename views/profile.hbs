@@ -1,0 +1,80 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://www.tescom-ups.com/images/anchor_amblem.svg"
+    />
+    <link rel="stylesheet" href="/profileStyle.css" />
+    <link rel="stylesheet" href="/navbar.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <h1>Tescom</h1>
+        <p>Kesintisiz Güç Kaynakları</p>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Ana Sayfa</a></li>
+        <li><a href="/profile" class="active">Profil</a></li>
+        <li><a href="/devices">Cihazlar</a></li>
+        <li><a href="/auth/logout" class="logout">Çıkış</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <div class="profile-card">
+        <div class="profile-header">
+
+          <div class="welcome-text">
+            <h1>Profil Sayfası</h1>
+            <p>Hoş geldin, {{username}}!</p>
+          </div>
+        </div>
+
+        <div class="update-form">
+          <h3>Bilgilerini Güncelle</h3>
+          <form action="/auth/update" method="POST">
+            <div class="form-group">
+              <label for="username">Kullanıcı Adı:</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value="{{username}}"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-posta:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value="{{email}}"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Yeni Şifre:</label>
+              <input type="password" id="password" name="password" />
+            </div>
+
+            <button type="submit">Güncelle</button>
+          </form>
+
+          {{#if message}}
+            <div class="message">
+              <h4>{{message}}</h4>
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

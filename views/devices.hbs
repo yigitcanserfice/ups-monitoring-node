@@ -1,0 +1,76 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UPS Simülatörü</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://www.tescom-ups.com/images/anchor_amblem.svg"
+    />
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/devices.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <h1>Tescom</h1>
+        <p>Kesintisiz Güç Kaynakları</p>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Ana Sayfa</a></li>
+        <li><a href="/profile">Profil</a></li>
+        <li><a href="/devices" class="active">Cihazlar</a></li>
+        <li><a href="/auth/logout" class="logout">Çıkış</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <div class="dashboard-header">
+        <h1>UPS Cihaz Yönetimi</h1>
+        <div>
+          <a href="/user/devices/alarms" class="alarms-btn">Alarmlar</a>
+          <a href="/devices/add" class="add-device-btn">+ Yeni Cihaz Ekle</a>
+        </div>
+      </div>
+
+      <div class="filters-section">
+        <div class="filter-group">
+          <label for="location">Konum:</label>
+          <select name="location" id="location" onchange="filterDevices(event)">
+            <option value="">Tüm Konumlar</option>
+            <option value="Istanbul">İstanbul</option>
+            <option value="Izmir">İzmir</option>
+            <option value="Antalya">Antalya</option>
+            <option value="Ankara">Ankara</option>
+            <option value="Bursa">Bursa</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="model">Model:</label>
+          <select name="model" id="model" onchange="filterDevices(event)">
+            <option value="">Tüm Modeller</option>
+            <option value="Model - A">Model - A</option>
+            <option value="Model - B">Model - B</option>
+            <option value="Model - C">Model - C</option>
+            <option value="Model - X">Model - X</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="status">Durum:</label>
+          <select name="status" id="status" onchange="filterDevices(event)">
+            <option value="">Tüm Durumlar</option>
+            <option value="online">Çevrimiçi</option>
+            <option value="offline">Çevrimdışı</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="device-data" class="devices-grid"></div>
+    </div>
+
+    <script src="/devicesScript.js"></script>
+  </body>
+</html>

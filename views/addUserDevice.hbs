@@ -1,0 +1,46 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cihaz Ekle</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://www.tescom-ups.com/images/anchor_amblem.svg"
+    />
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/devices.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <h1>Tescom</h1>
+        <p>Kesintisiz Güç Kaynakları</p>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Ana Sayfa</a></li>
+        <li><a href="/profile">Profil</a></li>
+        <li><a href="/devices" class="active">Cihazlar</a></li>
+        <li><a href="/auth/logout" class="logout">Çıkış</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <h1>Cihaz Ekle</h1>
+      <div class="filters-section" style="margin-top: 25px ;">
+        <!-- Tarih Filtresi -->
+        <div class="filter-group">
+          <form action="/user/devices/add" method="POST">
+            <label for="mac_address">MAC Adresi:</label>
+            <input type="text" id="mac_address" name="mac_address" required />
+            <button
+              type="submit"
+              class="add-device-btn"
+              style="border:none; margin-top:10px"
+            >Cihaz Ekle</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

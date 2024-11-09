@@ -1,0 +1,71 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cihaz Ekle</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://www.tescom-ups.com/images/anchor_amblem.svg"
+    />
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/devices.css" />
+
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <h1>Tescom</h1>
+        <p>Kesintisiz Güç Kaynakları</p>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Ana Sayfa</a></li>
+        <li><a href="/profile">Profil</a></li>
+        <li><a href="/devices" class="active">Cihazlar</a></li>
+        <li><a href="/auth/logout" class="logout">Çıkış</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <h1>Yeni Cihaz Ekle</h1>
+
+      <form action="/devices/add" method="POST">
+        <div class="filters-section">
+          <div class="filter-group">
+            <label for="device_name">Device Name</label>
+            <input type="text" id="device_name" name="device_name" required />
+          </div>
+
+          <div class="filter-group">
+            <label for="model">Model</label>
+            <input type="text" id="model" name="model" required />
+          </div>
+
+          <div class="filter-group">
+            <label for="mac_address">MAC Address</label>
+            <input type="text" id="mac_address" name="mac_address" required />
+          </div>
+
+          <div class="filter-group">
+            <label for="city">City</label>
+            <select id="city" name="city" required>
+              <option value="">Şehir Seçiniz</option>
+              <option value="Istanbul">Istanbul</option>
+              <option value="Izmir">Izmir</option>
+              <option value="Ankara">Ankara</option>
+              <option value="Bursa">Bursa</option>
+              <option value="Antalya">Antalya</option>
+              <!-- Diğer şehirleri buraya ekleyebilirsiniz -->
+            </select>
+          </div>
+
+          <button
+            class="add-device-btn"
+            type="submit"
+            style="border: none;"
+          >Cihaz Ekle</button>
+        </div>
+      </form>
+
+    </div>
+  </body>
+</html>
